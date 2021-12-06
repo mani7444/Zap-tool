@@ -1,0 +1,1678 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "v1",
+    "title": "Fusion Patrol Service",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:80"
+    }
+  ],
+  "paths": {
+    "/daywise-beatpoint-log": {
+      "get": {
+        "summary": "Get daywiseBeatLog",
+        "operationId": "getDaywiseBeatLog",
+        "tags": ["beat log"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "insert day wise beat point id",
+        "operationId": "addDayWiseBeatPointId",
+        "tags": ["addDayWiseBeatPointId"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addDayWiseBeatPointId"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/sectors":{
+      "get": {
+        "summary": "Get Sectors Data",
+        "operationId": "getSectors",
+        "tags": ["beat log"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundary":{
+      "get": {
+        "summary": "Get Boundary Data",
+        "operationId": "getBoundary",
+        "tags": ["beat log"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/beat-route":{
+      "post": {
+        "summary": "",
+        "operationId": "getBeatRoute",
+        "tags": ["getBeatRoute"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beat-route"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/recommended-beat-points":{
+      "post": {
+        "summary": "",
+        "operationId": "getRecommendedBeatPoints",
+        "tags": ["getRecommendedBeatPoints"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/recommended-beat-points"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/daywise-beats": {
+      "post": {
+        "summary": "Update a day wise beats",
+        "operationId": "updateDayWiseBeats",
+        "tags": ["updateDayWiseBeats"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The id of the route to update",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response to a valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/beat-of-the-day":{
+      "post": {
+        "summary": "",
+        "operationId": "getBeatOfTheDay",
+        "tags": ["getBeatOfTheDay"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beat-of-the-day"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/pspv-map-by-id":{
+      "post": {
+        "summary": "",
+        "operationId": "getPsPvMapById",
+        "tags": ["getPsPvMapById"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/pspv-map-by-id"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get pspvmaps",
+        "operationId": "getPsPvMap",
+        "tags": ["getPsPvMap"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/route":{
+      "post": {
+        "summary": "",
+        "operationId": "getRoute",
+        "tags": ["getRoute"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/route"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/check-assigned-patrol-route":{
+      "post": {
+        "summary": "",
+        "operationId": "checkAssignedPatrolRoute",
+        "tags": ["checkAssignedPatrolRoute"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/check-assigned-patrol-route"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/post-user-mapping":{
+      "post": {
+        "summary": "",
+        "operationId": "postUserMapping",
+        "tags": ["postUserMapping"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/post-user-mapping"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/user-daywise-mapping":{
+      "post": {
+        "summary": "",
+        "operationId": "userDayWiseMapping",
+        "tags": ["userDayWiseMapping"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user-daywise-mapping"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/co-officer":{
+      "post": {
+        "summary": "",
+        "operationId": "addCoOfficer",
+        "tags": ["addCoOfficer"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/add-co-officer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/daywise-beat-mapping":{
+      "post": {
+        "summary": "",
+        "operationId": "updateDaywiseBeatMapping",
+        "tags": ["updateDaywiseBeatMapping"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/beat-points":{
+      "post": {
+        "summary": "",
+        "operationId": "beatPoints",
+        "tags": ["beatPoints"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/co-filed-officers-list":{
+      "post": {
+        "summary": "",
+        "operationId": "coFieldOfficersList",
+        "tags": ["coFieldOfficersList"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/co-filed-officers-list"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/incident-actions":{
+      "get": {
+        "summary": "Get inciednt actions",
+        "operationId": "getIncidentActions",
+        "tags": ["getIncidentActions"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/incident-types":{
+      "get": {
+        "summary": "Get inciednt types",
+        "operationId": "getIncidentTypes",
+        "tags": ["getIncidentTypes"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/incident-sub-types":{
+      "get": {
+        "summary": "Get inciednt types",
+        "operationId": "getIncidentSubTypes",
+        "tags": ["getIncidentSubTypes"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/status-list":{
+      "get": {
+        "summary": "Get inciednt types",
+        "operationId": "getListOfStatus",
+        "tags": ["getListOfStatus"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/incident-report":{
+      "post": {
+        "summary": "",
+        "operationId": "updateIncidentReportById",
+        "tags": ["updateIncidentReportById"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-incident-report"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/field-officer-status":{
+      "post": {
+        "summary": "",
+        "operationId": "updateFieldOfficerStatus",
+        "tags": ["updateFieldOfficerStatus"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-filed-officer-status"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/incident-list-by-user":{
+      "post": {
+        "summary": "",
+        "operationId": "incidentListByUserId",
+        "tags": ["incidentListByUserId"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/login":{
+      "post": {
+        "summary": "",
+        "operationId": "login",
+        "tags": ["login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/incident":{
+      "post": {
+        "summary": "",
+        "operationId": "incidentCreate",
+        "tags": ["incidentCreate"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/gisRoute":{
+      "get": {
+        "summary": "Get Gis Route",
+        "operationId": "gisRoute",
+        "tags": ["beat log"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/navigate":{
+      "get": {
+        "summary": "Get Gis Navigate",
+        "operationId": "gisNavigate",
+        "tags": ["beat log"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/police-stations":{
+      "get": {
+        "summary": "Get ploice stations master",
+        "operationId": "policeStations",
+        "tags": ["ploice stations master"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-notification-token":{
+      "post": {
+        "summary": "",
+        "operationId": "updateTokenForUser",
+        "tags": ["updateTokenForUser"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/user-data-by-entityId": {
+      "post": {
+        "summary": "",
+        "operationId": "getUserDataByEntityId",
+        "tags": ["userDataByEntityId"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/vehicle-data-by-device":{
+      "post": {
+        "summary": "",
+        "operationId": "getVehiclesDataByDevice",
+        "tags": ["getVehiclesDataByDevice"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/incident-update-by-id":{
+      "post": {
+        "summary": "update incident by id",
+        "operationId": "updateIncident",
+        "tags": ["updateIncident"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/snap-to-road":{
+      "post": {
+        "summary": "snapToRoad",
+        "operationId": "snapToRoad",
+        "tags": ["snapToRoad"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/vehicle-positions":{
+      "get": {
+        "summary": "Get Vehicle Positions",
+        "operationId": "getVehiclePositions",
+        "tags": ["Vehicles Positions"],
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of vehicle positions",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/beat-point-list":{
+      "post": {
+        "summary": "get beat points for route",
+        "operationId": "getBeatPointsList",
+        "tags": ["beat points for route"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/beat-routing":{
+      "post": {
+        "summary": "get route for beat points",
+        "operationId": "getBeatPointRouting",
+        "tags": ["route for beat points"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/beat-plan-master":{
+      "post": {
+        "summary": "update beat plan master",
+        "operationId": "updateBeatPlanMaster",
+        "tags": ["update beat plan master"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/beat-point":{
+      "post": {
+        "summary": "update/save beat points",
+        "operationId": "updateBeatPoints",
+        "tags": ["update/save beat points"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/upload/{id}":{
+      "put": {
+        "summary": "upload image",
+        "operationId": "upload",
+        "tags": ["upload incident image"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The id of the incident",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/live-vehicle-data":{
+      "post": {
+        "summary": "get live vehicles data",
+        "operationId": "liveVechicleData",
+        "tags": ["live vehicles data"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/beat-status":{
+      "post": {
+        "summary": "get Beat Status",
+        "operationId": "getBeatStatus",
+        "tags": ["get Beat Status"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/assign-field-officer":{
+      "post": {
+        "summary": "Assign Field Officer",
+        "operationId": "assignFieldOfficer",
+        "tags": ["Assign Field Officer"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/vehicles-by-ps":{
+      "post": {
+        "summary": "get Vehicles by ps id",
+        "operationId": "getVehiclesByPs",
+        "tags": ["Vehicles by ps id"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/reverse-geocoding":{
+      "post": {
+        "summary": "reverse geo coding",
+        "operationId": "reverseGeoCoding",
+        "tags": ["reverse geo coding"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "201": {
+            "description": "Null response"
+          }  
+        }
+      }
+    },
+    "/location-search":{
+      "get": {
+        "summary": "geo location search",
+        "operationId": "gisLocationSearch",
+        "tags": ["geo location search"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of beat log",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          }
+        }
+      },
+      "Pets": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Pet"
+        }
+      },
+      "addDayWiseBeatPointId": {
+        "type": "object",
+        "properties": {
+          "f_beat_map_id": {
+            "type": "integer"
+          },
+          "f_ps_pv_map_id": {
+            "type": "integer"
+          },
+          "f_day_wise_beat_id": {
+            "type": "integer"
+          },
+          "f_beat_geo_point": {
+            "type": "object"
+          },
+          "f_comments": {
+            "type": "string"
+          },
+          "f_created_on": {
+            "type": "string"
+          },
+          "f_updated_on": {
+            "type": "string"
+          },
+          "f_created_by": {
+            "type": "integer"
+          },
+          "f_updated_by": {
+            "type": "integer"
+          }
+        }
+      },
+      "beat-route": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array"
+          }
+        } 
+      },
+      "recommended-beat-points":{
+        "type": "object",
+        "properties": {
+          "ps_id": {
+            "type": "integer"
+          },
+          "sector_ids":{
+            "type": "array"
+          }
+        } 
+      },
+      "beat-of-the-day":{
+        "type": "object",
+        "properties": {
+          "ps_pv_id": {
+            "type": "string"
+          }
+        } 
+      },
+      "pspv-map-by-id":{
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        } 
+      },
+      "route":{
+        "type": "object",
+        "properties": {
+          "psId": {
+            "type": "string"
+          }
+        } 
+      },
+      "check-assigned-patrol-route":{
+        "type": "object",
+        "properties": {
+          "ps_pv_id": {
+            "type": "string"
+          }
+        } 
+      },
+      "post-user-mapping":{
+        "type": "object",
+        "properties": {
+          "f_user_id": {
+            "type": "string"
+          },
+          "f_start_date_time": {
+            "type": "string"
+          },
+          "f_end_date_time":{
+            "type": "string"
+          },
+          "f_updated_by":{
+            "type": "string"
+          },
+          "f_ps_pv_map_id":{
+            "type": "string"
+          }
+        }
+      },
+      "user-daywise-mapping":{
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "add-co-officer":{
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "officerId": {
+            "type": "string"
+          },
+          "shift_hours": {
+            "type": "string"
+          }
+        }
+      },
+      "co-filed-officers-list":{
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "update-incident-report":{
+        "type": "object",
+        "properties": {
+          "incidentId": {
+            "type": "integer"
+          },
+          "comments":{
+            "type": "string"
+          },
+          "incidentActionId":{
+            "type": "integer"
+          }
+        }
+      },
+      "update-filed-officer-status":{
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "updateBody":{
+            "type": "object"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
